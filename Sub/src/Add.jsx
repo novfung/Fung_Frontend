@@ -28,9 +28,6 @@ function Add() {
           content: form.content,
           // image_url: "string",
         },
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
       })
       .then((result) => {
         alert("추가")

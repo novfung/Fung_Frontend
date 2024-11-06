@@ -5,7 +5,7 @@ import JoinPage from "./Login.jsx";
 import LoginMain from './LoginMain.jsx'
 import MyPage from './Mypage.jsx';
 import Add from './Add.jsx';
-// import AddMain from './AddMain/AddMain.js'
+import AddMain from './AddMain.jsx'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 createRoot(document.getElementById("root")).render(
@@ -17,7 +17,7 @@ createRoot(document.getElementById("root")).render(
       <Route path="/LM" element={<LoginMain/>}/>
       <Route path='/MyPage' element={<MyPage/>}/>
       <Route path='/Add' element={<Add/>}/>
-      {/* <Route path='/AddMain' element={<AddMain/>}/> */}
+      <Route path='/AddMain' element={<AddMain/>}/>
     </Routes>
   </BrowserRouter>
 );

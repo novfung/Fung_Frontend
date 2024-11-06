@@ -12,6 +12,9 @@ function LoginMain(){
         <Link to='/Add' style={{textDecoration : 'none'}}>
           <button>추가</button>
         </Link>
+        <Link to="/AddMain" style={{textDecoration:'none'}}>
+          <div>게시물</div>
+        </Link>
       </div>
     </div>
   );
