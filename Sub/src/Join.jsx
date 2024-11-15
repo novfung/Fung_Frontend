@@ -2,79 +2,81 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 
-function Login() {
+function Join() {
   const [form, setForm] = useState({
-    userId: "",
-    userPass: "",
-    userInterest: "",
-    userBirth:"",
-    userImg: null,
+    account_id: "",
+    password: "",
+    interest: "",
+    birth: "",
   });
 
-  const handChange = e => {
-    const {name, value} = e.target
+  const handChange = (e) => {
+    const { name, value } = e.target;
     setForm((prev) => ({
       ...prev,
-      [name] : name === "userImg" ? e.target.files[0] : value,
+      [name]: name === "userImg" ? e.target.files[0] : value,
     }));
-  }
+  };
 
   const nav = useNavigate();
-  const LoginButton = () => {
+  const JoinButton = () => {
     if (
-      form.userId !== "" &&
-      form.userPass !== "" &&
-      form.userInterest !== "" &&
-      form.userBirth !== "" &&
-      form.userImg !== null
-    ){
-      const formData = new FormData()
-
-      formData.append("account_id", form.userId)
-      formData.append("password", form.userPass)
-      formData.append("image_url",form.userImg)
-      formData.append("interest",form.userInterest)
-      formData.append("birth", form.userBirth)
-      
-      axios({
-        method: "post",
-        url: `http://localhost:8080/users/signup`,
-        data: {
-          account_id: form.userId,
-          password: form.userPass,
-          // image_url: form.userImg,
-          birth : form.userBirth,
-          interest: form.userInterest
-        },
-      })
-      .then((result) => {
-        alert("성공");
-        console.log(result.data);
-        nav("/JoinPage", { state: { form:form} });
-      })
-      .catch((error) =>{
-        alert("실패")
-        console.log(error)
-      })
-      } else {
-      alert("다 입력 쳐 해라");
-      }
+      form.account_id !== "" &&
+      form.password !== "" &&
+      form.interest !== "" &&
+      form.birth !== ""
+    ) {
+      axios
+        .post(`http://3.36.53.67:8080/users/signup`, form, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+        .then((res) => {
+          console.log("성공", res);
+          nav('/Login',{state:{form : form}})
+        })
+        .catch((error) => {
+          console.log("실패", error);
+        });
+    }else{
+      console.log("모든 필드를 입력하세요")
     }
-  
-  
+  };
+
   return (
     <div>
-      <div>
-        <input type="text" name="userId" placeholder="로그인"  onChange={handChange}/>
-        <input type="password" name="userPass" placeholder="비번" onChange={handChange}/>
-        <input type="text" name="userInterest" placeholder="관심사" onChange={handChange}/>
-        <input type="date" name="userBirth" placeholder="생일" onChange={handChange}/>
-        <input name="userImg" type="file" onChange={handChange}/>
-      </div>
-      <div>
-        <button onClick={LoginButton}>버튼</button>
-      </div>
+      <input
+        type="text"
+        name="account_id"
+        value={form.account_id}
+        placeholder="로그인"
+        onChange={handChange}
+      />
+      <input
+        type="password"
+        name="password"
+        value={form.password}
+        placeholder="비번"
+        onChange={handChange}
+      />
+      <input
+        type="text"
+        name="interest"
+        value={form.interest}
+        placeholder="관심사"
+        onChange={handChange}
+      />
+      <input
+        type="date"
+        name="birth"
+        value={form.birth}
+        placeholder="생일"
+        onChange={handChange}
+      />
+      {/* <input name="userImg" type="file" onChange={handChange} />   */}
+      <button onClick={JoinButton}>버튼</button>
     </div>
   );
 }
-export default Login;
+export default Join;
