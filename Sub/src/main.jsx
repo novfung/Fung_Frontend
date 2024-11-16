@@ -1,7 +1,7 @@
 import { createRoot } from "react-dom/client";
 import MainPage from "./MainPage.jsx";
-import Login from "./Join.jsx";
-import JoinPage from "./Login.jsx";
+import JoinPage from "./Join.jsx";
+import Login from "./Login.jsx";
 import LoginMain from './LoginMain.jsx'
 import MyPage from './Mypage.jsx';
 import Add from './Add.jsx';
