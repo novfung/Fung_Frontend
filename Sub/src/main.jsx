@@ -5,7 +5,7 @@ import Login from "./Login.jsx";
 import LoginMain from './LoginMain.jsx'
 import MyPage from './Mypage.jsx';
 import Add from './Add.jsx';
-import AddMain from './AddMain.jsx'
+import AddMain from "./AddMain.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 createRoot(document.getElementById("root")).render(

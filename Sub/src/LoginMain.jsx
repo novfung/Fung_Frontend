@@ -31,7 +31,7 @@ function LoginMain() {
           {feeds.map((feed, index) => {
             return (
               <div key={feed.key}>
-                <Link to="/AddMain" style={{ textDecoration: "none" }}>
+                <Link to="/AddMain" style={{ textDecoration: "none", color:"black"}}>
                   <li>
                     <h3>{feed.title}</h3>
                     <p>{feed.content}</p>
